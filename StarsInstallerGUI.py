@@ -3,6 +3,37 @@ import os
 import tkinter as tk
 from tkinter import ttk
 
+
+def encrypter(mail, password, bilkentID, srsPass):
+    l1 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]#This sequence is private. In order to keep people's data in their computer safe, I use Caesar Encryption
+    j = 0
+    
+    mail2 = ""
+    password2 = ""
+    bilkentID2 = ""
+    srsPass2 = ""
+    
+    for i in mail:
+        mail2 += chr(ord(i) + l1[j])
+        j += 1
+    for i in password:
+        password2 += chr(ord(i) + l1[j])
+        j += 1
+    for i in bilkentID:
+        bilkentID2 += chr(ord(i) + l1[j])
+        j += 1
+    for i in srsPass:
+        srsPass2 += chr(ord(i) + l1[j])
+        j += 1
+
+    program(mail2, password2, bilkentID2, srsPass2)
+
+
+
+
+
+
+
 def program(mail, password, bilkentID, srsPass):
     path = "C:/Users/$USERNAME"
     path = os.path.expandvars(path)
@@ -34,7 +65,7 @@ def buttonClicked():
         password = text2.get()
         bilkentID = text3.get()
         srsPass = text4.get()
-        program(mail, password, bilkentID, srsPass)
+        encrypter(mail, password, bilkentID, srsPass)
     else:
         laby.configure(text = "Please fill all information...")
         
@@ -74,5 +105,3 @@ laby.grid(row = 5)
 but1 = ttk.Button(root, text = "Install", command = buttonClicked)
 but1.grid(columnspan=2, row = 6, ipadx=40, ipady=15)
 root.mainloop()
-
-
